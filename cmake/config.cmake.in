@@ -1,0 +1,5 @@
+@PACKAGE_INIT@
+
+message("Targets: math_lib::math_lib")
+
+include(${CMAKE_CURRENT_LIST_DIR}/@PROJECT_NAME@Targets.cmake)
