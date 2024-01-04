@@ -4,7 +4,9 @@ project(main)
 
 list(APPEND CMAKE_PREFIX_PATH output/lib/cmake/math_lib)
 
-find_package(math_lib 1.0.0 REQUIRED)
+find_package(math_lib 1.1.0 REQUIRED)
+
+message("math_lib_VERSION = ${math_lib_VERSION}")
 
 add_executable(main main.cpp)
 

@@ -9,6 +9,26 @@ target_sources(${PROJECT_NAME}
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_ROOT}/include)
 
+get_target_property(LIB_TYPE ${PROJECT_NAME} TYPE)
+
+if(LIB_TYPE STREQUAL "SHARED_LIBRARY")
+    message(STATUS "BUILD_SHARED_LIBS=ON")
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+        C_VISIBILITY_PRESET "hidden"
+        CXX_VISIBILITY_PRESET "hidden"
+        VISIBILITY_INLINES_HIDDEN ON
+    )
+    include(GenerateExportHeader)
+    generate_export_header(${PROJECT_NAME})
+
+    target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+    target_compile_definitions(${PROJECT_NAME} PUBLIC "MATH_LIB_SHARED")
+
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/math_lib_export.h
+        DESTINATION include/${PROJECT_NAME}
+    )
+endif()
+
 install(TARGETS ${PROJECT_NAME}
     EXPORT ${PROJECT_EXPORT}
     FILE_SET HEADERS
