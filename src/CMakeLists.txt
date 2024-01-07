@@ -9,9 +9,7 @@ target_sources(${PROJECT_NAME}
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_ROOT}/include)
 
-get_target_property(LIB_TYPE ${PROJECT_NAME} TYPE)
-
-if(LIB_TYPE STREQUAL "SHARED_LIBRARY")
+if(BUILD_SHARED_LIBS)
     message(STATUS "BUILD_SHARED_LIBS=ON")
     set_target_properties(${PROJECT_NAME} PROPERTIES
         C_VISIBILITY_PRESET "hidden"
