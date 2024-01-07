@@ -11,11 +11,6 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_ROOT}/include)
 
 if(BUILD_SHARED_LIBS)
     message(STATUS "BUILD_SHARED_LIBS=ON")
-    set_target_properties(${PROJECT_NAME} PROPERTIES
-        C_VISIBILITY_PRESET "hidden"
-        CXX_VISIBILITY_PRESET "hidden"
-        VISIBILITY_INLINES_HIDDEN ON
-    )
     include(GenerateExportHeader)
     generate_export_header(${PROJECT_NAME})
 

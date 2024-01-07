@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(math_lib VERSION 1.1.0)
+project(math_lib VERSION 1.2.0)
+
+set(CMAKE_CXX_VISIBILITY_PRESET "hidden")
+set(CMAKE_VISIBILITY_INLINES_HIDDEN ON)
 
 get_property(IS_MULTI_CONFIG GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
 
