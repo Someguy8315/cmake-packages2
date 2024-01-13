@@ -11,3 +11,11 @@ message("math_lib_VERSION = ${math_lib_VERSION}")
 add_executable(main main.cpp)
 
 target_link_libraries(main PRIVATE math_lib::math_lib)
+
+if(WIN32)
+    add_custom_command(TARGET main POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy
+        $<TARGET_FILE:math_lib::math_lib>
+        $<TARGET_FILE_DIR:main>
+    )
+endif()
